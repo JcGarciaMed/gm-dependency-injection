@@ -1,9 +1,6 @@
 package com.greymatter.gmdependencyinjection;
 
-import com.greymatter.gmdependencyinjection.controllers.ConstructorInjectedController;
-import com.greymatter.gmdependencyinjection.controllers.MyController;
-import com.greymatter.gmdependencyinjection.controllers.PropertyInjectedController;
-import com.greymatter.gmdependencyinjection.controllers.SetterInjectedController;
+import com.greymatter.gmdependencyinjection.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +12,8 @@ public class GmDependencyInjectionApplication {
         ApplicationContext ctx = SpringApplication.run(GmDependencyInjectionApplication.class, args);
 
         MyController myController = (MyController) ctx.getBean("myController");
+        I18nController i18nController = (I18nController)  ctx.getBean("i18nController");
+        System.out.println(i18nController.sayGreeting());
 
         String greeting = myController.sayHello();
 
