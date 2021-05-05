@@ -1,17 +1,15 @@
 package com.greymatter.gmdependencyinjection.controllers;
 
-import com.greymatter.gmdependencyinjection.services.GreetingServiceImpl;
+import com.greymatter.gmdependencyinjection.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ConstructorInjectedControllerTest {
     ConstructorInjectedController controller;
 
     @BeforeEach
     void setUp() {
-        controller = new ConstructorInjectedController(new GreetingServiceImpl());
+        controller = new ConstructorInjectedController(new ConstructorGreetingService());
     }
 
     @Test
