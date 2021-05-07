@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@ComponentScan(basePackages = {"com.greymatter.gmdependencyinjection", "com.greymatter.pets"})
+/*@ComponentScan(basePackages = {"com.greymatter.gmdependencyinjection", "com.greymatter.pets"})*/
 @SpringBootApplication
 public class GmDependencyInjectionApplication {
 
