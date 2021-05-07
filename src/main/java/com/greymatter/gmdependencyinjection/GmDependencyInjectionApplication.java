@@ -4,12 +4,21 @@ import com.greymatter.gmdependencyinjection.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+
+@ComponentScan(basePackages = {"com.greymatter.gmdependencyinjection", "com.greymatter.pets"})
 @SpringBootApplication
 public class GmDependencyInjectionApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(GmDependencyInjectionApplication.class, args);
+
+
+        PetController petController = ctx.getBean("petController", PetController.class);
+        System.out.println("--- The Best Pet is ---");
+        System.out.println(petController.whichPetIsTheBest());
+
 
         MyController myController = (MyController) ctx.getBean("myController");
         I18nController i18nController = (I18nController)  ctx.getBean("i18nController");
@@ -17,7 +26,7 @@ public class GmDependencyInjectionApplication {
 
         String greeting = myController.sayHello();
 
-        System.out.println(greeting);
+        System.out.println( );
 
         System.out.println("----Property");
 
