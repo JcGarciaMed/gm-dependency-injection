@@ -21,10 +21,14 @@ public class GmDependencyInjectionApplication {
 
 
         MyController myController = (MyController) ctx.getBean("myController");
+        System.out.println("----Primary");
+        String greeting = myController.sayHello();
+        System.out.println(greeting);
+
         I18nController i18nController = (I18nController)  ctx.getBean("i18nController");
+        System.out.println("----i18N");
         System.out.println(i18nController.sayGreeting());
 
-        String greeting = myController.sayHello();
 
         System.out.println( );
 
