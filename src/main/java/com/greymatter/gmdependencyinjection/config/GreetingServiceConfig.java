@@ -1,17 +1,28 @@
 package com.greymatter.gmdependencyinjection.config;
 
+import com.greymatter.gmdependencyinjection.datasource.FakeDataSource;
 import com.greymatter.gmdependencyinjection.repositories.EnglishGreetingRepository;
 import com.greymatter.gmdependencyinjection.repositories.EnglishGreetingRepositoryImpl;
 import com.greymatter.gmdependencyinjection.services.*;
 import com.greymatter.pets.PetService;
 import com.greymatter.pets.PetServiceFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
+@PropertySource("classpath:datasource.properties")
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${gm.username}") String username,
+                                  @Value("${gm.password}")String password,
+                                  @Value("${gm.jdbcurl}")String jdbcurl){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcUrl(jdbcurl);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory() {

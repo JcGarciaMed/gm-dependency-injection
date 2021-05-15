@@ -1,6 +1,7 @@
 package com.greymatter.gmdependencyinjection;
 
 import com.greymatter.gmdependencyinjection.controllers.*;
+import com.greymatter.gmdependencyinjection.datasource.FakeDataSource;
 import com.greymatter.gmdependencyinjection.services.PrototypeBean;
 import com.greymatter.gmdependencyinjection.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -64,6 +65,14 @@ public class GmDependencyInjectionApplication {
 
         PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
         System.out.println(prototypeBean2.getMyScope());
+
+
+        System.out.println("--------------Fake data source!!!-----");
+
+        FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
+        System.out.println(fakeDataSource.getUsername());
+        System.out.println(fakeDataSource.getPassword());
+        System.out.println(fakeDataSource.getJdbcUrl());
 
 
     }
