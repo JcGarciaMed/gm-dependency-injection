@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dog,EN,dev
+gm:
+  username: ymlU2010
+  password: ymljc3028218
+  jdbcurl: ymlasda22324541223
