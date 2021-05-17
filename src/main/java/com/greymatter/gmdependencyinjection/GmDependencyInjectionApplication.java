@@ -1,5 +1,7 @@
 package com.greymatter.gmdependencyinjection;
 
+import com.greymatter.gmdependencyinjection.config.GmConfiguration;
+import com.greymatter.gmdependencyinjection.config.GmConstructorConfig;
 import com.greymatter.gmdependencyinjection.controllers.*;
 import com.greymatter.gmdependencyinjection.datasource.FakeDataSource;
 import com.greymatter.gmdependencyinjection.services.PrototypeBean;
@@ -73,6 +75,19 @@ public class GmDependencyInjectionApplication {
         System.out.println(fakeDataSource.getUsername());
         System.out.println(fakeDataSource.getPassword());
         System.out.println(fakeDataSource.getJdbcUrl());
+
+
+        System.out.println("-----------config props bean");
+        GmConfiguration gmConfiguration = ctx.getBean(GmConfiguration.class);
+        System.out.println(gmConfiguration.getUsername());
+        System.out.println(gmConfiguration.getPassword());
+        System.out.println(gmConfiguration.getJdbcUrl());
+
+        System.out.println("-----------Constructor Binding");
+        GmConstructorConfig gmConstructorConfig = ctx.getBean(GmConstructorConfig.class);
+        System.out.println(gmConstructorConfig.getUsername());
+        System.out.println(gmConstructorConfig.getPassword());
+        System.out.println(gmConstructorConfig.getJdbcUrl());
 
 
     }

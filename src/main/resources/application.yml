@@ -1,7 +1,18 @@
 spring:
   profiles:
-    active: dog,EN,dev
+    active:
+      - dog
+      - EN
+      - dev
 gm:
   username: ymlU2010
   password: ymljc3028218
   jdbcurl: ymlasda22324541223
+
+---
+spring:
+  profiles: prod
+gm:
+  username: prodU2010
+  password: prodjc3028218
+  jdbcurl: prodasda22324541223

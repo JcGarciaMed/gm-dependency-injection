@@ -7,19 +7,19 @@ import com.greymatter.gmdependencyinjection.services.*;
 import com.greymatter.pets.PetService;
 import com.greymatter.pets.PetServiceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(GmConstructorConfig.class)
 @Configuration
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(@Value("${gm.username}") String username,
-                                  @Value("${gm.password}")String password,
-                                  @Value("${gm.jdbcurl}")String jdbcurl){
+    FakeDataSource fakeDataSource(GmConstructorConfig gmConstructorConfig){
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcurl);
+        fakeDataSource.setUsername(gmConstructorConfig.getUsername());
+        fakeDataSource.setPassword(gmConstructorConfig.getPassword());
+        fakeDataSource.setJdbcUrl(gmConstructorConfig.getJdbcUrl());
         return fakeDataSource;
     }
 
